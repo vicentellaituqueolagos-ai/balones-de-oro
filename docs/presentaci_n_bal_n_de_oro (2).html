@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gala del Balón de Oro - Leyendas Históricas</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#FFF9E6',
+                            200: '#FCEBB6',
+                            300: '#FAD885',
+                            400: '#F7C154',
+                            500: '#DFA835',
+                            600: '#B88222',
+                            700: '#8C5E13',
+                            800: '#613E08',
+                            900: '#382202',
+                        },
+                        dark: {
+                            900: '#070709',
+                            800: '#0f0f14',
+                            700: '#181820',
+                            600: '#23232f'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Custom Gold Metallic Text Gradients */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF099 0%, #F1C40F 35%, #D4AC0D 70%, #9A7D0A 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-gradient-bright {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFE082 40%, #DFA835 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border-glow {
+            box-shadow: 0 0 20px rgba(223, 168, 53, 0.25), inset 0 0 15px rgba(223, 168, 53, 0.15);
+        }
+
+        .gold-button-glow:hover {
+            box-shadow: 0 0 25px rgba(223, 168, 53, 0.5);
+        }
+
+        /* Glassmorphism styling */
+        .glass-panel {
+            background: rgba(24, 24, 32, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(223, 168, 53, 0.2);
+        }
+
+        .glass-card {
+            background: rgba(15, 15, 20, 0.65);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+        }
+
+        /* Slide Animation Transitions */
+        .slide-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+        }
+
+        .slide-content.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            position: relative;
+        }
+
+        /* Background Particle Effect */
+        .gold-particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,215,0,0.8) 0%, rgba(223,168,53,0) 70%);
+            animation: float 12s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.2; }
+            50% { transform: translateY(-40px) scale(1.3); opacity: 0.6; }
+        }
+
+        /* Custom Scrollbar for smooth display */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070709;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #382202;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #DFA835;
+        }
+    </style>
+</head>
+<body class="bg-dark-900 text-slate-100 font-sans h-full min-h-screen flex flex-col justify-between overflow-x-hidden relative selection:bg-gold-500 selection:text-dark-900">
+
+    <!-- Ambient Gold Background Lights -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-gold-600/10 rounded-full blur-[120px]"></div>
+        <div class="absolute top-1/2 -right-40 w-[500px] h-[500px] bg-gold-500/10 rounded-full blur-[150px]"></div>
+        <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-amber-500/10 rounded-full blur-[130px]"></div>
+        
+        <!-- Animated subtle floating particles -->
+        <div class="gold-particle w-3 h-3 top-1/4 left-1/5" style="animation-delay: 0s;"></div>
+        <div class="gold-particle w-2 h-2 top-2/3 left-3/4" style="animation-delay: 2s;"></div>
+        <div class="gold-particle w-4 h-4 top-1/3 left-4/5" style="animation-delay: 4s;"></div>
+        <div class="gold-particle w-2 h-2 top-3/4 left-1/6" style="animation-delay: 1s;"></div>
+    </div>
+
+    <!-- TOP NAVBAR -->
+    <header class="relative z-20 w-full px-4 sm:px-8 py-4 glass-panel border-b border-gold-500/20">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-gold-700 via-gold-400 to-yellow-200 p-[1px] flex items-center justify-center shadow-lg shadow-gold-600/20">
+                    <div class="w-full h-full bg-dark-900 rounded-full flex items-center justify-center">
+                        <i class="fa-solid font-black fa-trophy text-gold-400 text-lg"></i>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="font-serif font-bold text-lg sm:text-xl tracking-wider gold-gradient-text uppercase">
+                        Balón de Oro
+                    </h1>
+                    <p class="text-[10px] sm:text-xs text-gold-400/70 tracking-widest uppercase font-semibold">
+                        Gala de Leyendas
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide Counter & Autoplay Controls -->
+            <div class="flex items-center gap-4 sm:gap-6">
+                <!-- Autoplay Toggle Button -->
+                <button id="autoplayBtn" onclick="toggleAutoplay()" class="flex items-center gap-2 px-3 py-1.5 rounded-full glass-card border border-gold-500/30 text-xs sm:text-sm text-gold-300 hover:text-white hover:border-gold-400 transition-all gold-button-glow cursor-pointer">
+                    <i id="autoplayIcon" class="fa-solid fa-play text-xs text-gold-400"></i>
+                    <span id="autoplayText" class="hidden sm:inline font-medium">Auto</span>
+                </button>
+
+                <!-- Current Slide Indicator Counter -->
+                <div class="flex items-center font-serif text-sm sm:text-base font-bold tracking-widest text-slate-300">
+                    <span id="currentSlideNum" class="text-gold-400 text-lg sm:text-xl">01</span>
+                    <span class="mx-1 text-slate-600">/</span>
+                    <span id="totalSlidesNum" class="text-slate-500">04</span>
+                </div>
+
+                <!-- Fullscreen Toggle Button -->
+                <button onclick="toggleFullscreen()" title="Pantalla Completa" class="w-9 h-9 rounded-full glass-card border border-gold-500/30 text-gold-300 hover:text-white hover:border-gold-400 flex items-center justify-center transition-all cursor-pointer">
+                    <i class="fa-solid fa-expand text-xs sm:text-sm"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Autoplay Animated Progress Bar -->
+        <div class="absolute bottom-0 left-0 w-full h-[2px] bg-dark-800">
+            <div id="progressBar" class="h-full bg-gradient-to-r from-gold-600 via-gold-400 to-yellow-200 w-0 transition-all duration-100 ease-linear"></div>
+        </div>
+    </header>
+
+    <!-- MAIN PRESENTATION STAGE -->
+    <main class="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-6 sm:py-8 flex items-center justify-center">
+        <div class="w-full relative min-h-[580px] lg:min-h-[500px] flex items-center">
+
+            <!-- SLIDE 1: LIONEL MESSI -->
+            <div class="slide-content active w-full" data-slide="0">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <!-- Winner Image Container -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative group w-full max-w-sm lg:max-w-none">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-gold-600 via-yellow-400 to-gold-700 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
+                            <div class="relative aspect-[3/4] w-full rounded-2xl overflow-hidden glass-card border-2 border-gold-500/40 p-2 shadow-2xl flex items-center justify-center">
+                                <img src="images/balondeoro1.jpg" 
+                                     alt="Lionel Messi Balón de Oro" 
+                                     onerror="handleImageError(this, 'Lionel Messi', '8 Balones de Oro')" 
+                                     class="w-full h-full object-cover rounded-xl transition duration-700 group-hover:scale-105">
+                                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-80"></div>
+                                <div class="absolute bottom-4 left-4 right-4 text-center">
+                                    <span class="inline-block px-3 py-1 rounded-full bg-gold-500/20 border border-gold-400/40 text-gold-300 text-xs font-semibold uppercase tracking-widest backdrop-blur-md">
+                                        Rrecord Insuperable
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Winner Info & Stats -->
+                    <div class="lg:col-span-7 flex flex-col justify-center space-y-6">
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="px-3 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-400 rounded-md text-xs font-bold uppercase tracking-widest">
+                                    Argentina • Delantero
+                                </span>
+                                <span class="text-slate-400 text-xs font-medium">Años de Oro: 2009, 2010, 2011, 2012, 2015, 2019, 2021, 2023</span>
+                            </div>
+                            <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+                                Lionel <span class="gold-gradient-text">Messi</span>
+                            </h2>
+                            <p class="text-gold-400/90 text-sm sm:text-base font-serif italic mt-1">
+                                "El rey supremo de la era moderna del fútbol mundial."
+                            </p>
+                        </div>
+
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            Único futbolista en la historia en ganar 8 Balones de Oro. Logró una gesta irrepetible al conseguir 4 trofeos consecutivos entre 2009 y 2012, y consagró su leyenda absoluta guiando a Argentina al título del Mundo en Qatar 2022.
+                        </p>
+
+                        <!-- Key Stats Grid -->
+                        <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-2">
+                            <div class="glass-card p-4 rounded-xl border border-gold-500/20 text-center hover:border-gold-400/50 transition">
+                                <div class="font-serif text-2xl sm:text-4xl font-extrabold gold-gradient-bright">8</div>
+                                <div class="text-[11px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Balones de Oro</div>
+                            </div>
+                            <div class="glass-card p-4 rounded-xl border border-gold-500/20 text-center hover:border-gold-400/50 transition">
+                                <div class="font-serif text-2xl sm:text-4xl font-extrabold text-white">838+</div>
+                                <div class="text-[11px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Goles Carrera</div>
+                            </div>
+                            <div class="glass-card p-4 rounded-xl border border-gold-500/20 text-center hover:border-gold-400/50 transition">
+                                <div class="font-serif text-2xl sm:text-4xl font-extrabold text-white">44</div>
+                                <div class="text-[11px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Títulos Colectivos</div>
+                            </div>
+                        </div>
+
+                        <!-- Highlights Badge list -->
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="px-3 py-1 rounded-full text-xs glass-panel border border-slate-700 text-slate-300">
+                                <i class="fa-solid fa-star text-gold-400 mr-1.5"></i>91 Goles en un año natural (2012)
+                            </span>
+                            <span class="px-3 py-1 rounded-full text-xs glass-panel border border-slate-700 text-slate-300">
+                                <i class="fa-solid fa-trophy text-gold-400 mr-1.5"></i>Campeón del Mundo 2022
+                            </span>
+                            <span class="px-3 py-1 rounded-full text-xs glass-panel border border-slate-700 text-slate-300">
+                                <i class="fa-solid fa-crown text-gold-400 mr-1.5"></i>6 Botas de Oro Europeas
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 2: CRISTIANO RONALDO -->
+            <div class="slide-content w-full" data-slide="1">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <!-- Winner Image Container -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative group w-full max-w-sm lg:max-w-none">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-gold-600 via-yellow-400 to-gold-700 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
+                            <div class="relative aspect-[3/4] w-full rounded-2xl overflow-hidden glass-card border-2 border-gold-500/40 p-2 shadow-2xl flex items-center justify-center">
+                                <img src="images/balondeoro2.jpg" 
+                                     alt="Cristiano Ronaldo Balón de Oro" 
+                                     onerror="handleImageError(this, 'Cristiano Ronaldo', '5 Balones de Oro')" 
+                                     class="w-full h-full object-cover rounded-xl transition duration-700 group-hover:scale-105">
+                                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-80"></div>
+                                <div class="absolute bottom-4 left-4 right-4 text-center">
+                                    <span class="inline-block px-3 py-1 rounded-full bg-gold-500/20 border border-gold-400/40 text-gold-300 text-xs font-semibold uppercase tracking-widest backdrop-blur-md">
+                                        Poder y Longevidad
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Winner Info & Stats -->
+                    <div class="lg:col-span-7 flex flex-col justify-center space-y-6">
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="px-3 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-400 rounded-md text-xs font-bold uppercase tracking-widest">
+                                    Portugal • Delantero
+                                </span>
+                                <span class="text-slate-400 text-xs font-medium">Años de Oro: 2008, 2013, 2014, 2016, 2017</span>
+                            </div>
+                            <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+                                Cristiano <span class="gold-gradient-text">Ronaldo</span>
+                            </h2>
+                            <p class="text-gold-400/90 text-sm sm:text-base font-serif italic mt-1">
+                                "El atleta perfecto y máximo goleador histórico del fútbol profesional."
+                            </p>
+                        </div>
+
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            Ganador de 5 Balones de Oro conseguidos con dos clubes distintos (Manchester United y Real Madrid). Dominó Europa ganando 5 Champions League y liderando a la Selección de Portugal hacia la conquista de la Eurocopa 2016.
+                        </p>
+
+                        <!-- Key Stats Grid -->
+                        <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-2">
+                            <div class="glass-card p-4 rounded-xl border border-gold-500/20 text-center hover:border-gold-400/50 transition">
+                                <div class="font-serif text-2xl sm:text-4xl font-extrabold gold-gradient-bright">5</div>
+                                <div class="text-[11px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Balones de Oro</div>
+                            </div>
+                            <div class="glass-card p-4 rounded-xl border border-gold-500/20 text-center hover:border-gold-400/50 transition">
+                                <div class="font-serif text-2xl sm:text-4xl font-extrabold text-white">900+</div>
+                                <div class="text-[11px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Goles Oficiales</div>
+                            </div>
+                            <div class="glass-card p-4 rounded-xl border border-gold-500/20 text-center hover:border-gold-400/50 transition">
+                                <div class="font-serif text-2xl sm:text-4xl font-extrabold text-white">5</div>
+                                <div class="text-[11px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">UEFA Champions League</div>
+                            </div>
+                        </div>
+
+                        <!-- Highlights Badge list -->
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="px-3 py-1 rounded-full text-xs glass-panel border border-slate-700 text-slate-300">
+                                <i class="fa-solid fa-bolt text-gold-400 mr-1.5"></i>Máximo goleador histórico de la Champions (140)
+                            </span>
+                            <span class="px-3 py-1 rounded-full text-xs glass-panel border border-slate-700 text-slate-300">
+                                <i class="fa-solid fa-flag text-gold-400 mr-1.5"></i>Campeón Eurocopa 2016
+                            </span>
+                            <span class="px-3 py-1 rounded-full text-xs glass-panel border border-slate-700 text-slate-300">
+                                <i class="fa-solid fa-award text-gold-400 mr-1.5"></i>4 Botas de Oro Europeas
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: JOHAN CRUYFF -->
+            <div class="slide-content w-full" data-slide="2">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <!-- Winner Image Container -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative group w-full max-w-sm lg:max-w-none">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-gold-600 via-yellow-400 to-gold-700 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
+                            <div class="relative aspect-[3/4] w-full rounded-2xl overflow-hidden glass-card border-2 border-gold-500/40 p-2 shadow-2xl flex items-center justify-center">
+                                <img src="images/balondeoro3.jpg" 
+                                     alt="Johan Cruyff Balón de Oro" 
+                                     onerror="handleImageError(this, 'Johan Cruyff', '3 Balones de Oro')" 
+                                     class="w-full h-full object-cover rounded-xl transition duration-700 group-hover:scale-105">
+                                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-80"></div>
+                                <div class="absolute bottom-4 left-4 right-4 text-center">
+                                    <span class="inline-block px-3 py-1 rounded-full bg-gold-500/20 border border-gold-400/40 text-gold-300 text-xs font-semibold uppercase tracking-widest backdrop-blur-md">
+                                        Arquitecto del Fútbol
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Winner Info & Stats -->
+                    <div class="lg:col-span-7 flex flex-col justify-center space-y-6">
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="px-3 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-400 rounded-md text-xs font-bold uppercase tracking-widest">
+                                    Países Bajos • Centrocampista / Delantero
+                                </span>
+                                <span class="text-slate-400 text-xs font-medium">Años de Oro: 1971, 1973, 1974</span>
+                            </div>
+                            <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+                                Johan <span class="gold-gradient-text">Cruyff</span>
+                            </h2>
+                            <p class="text-gold-400/90 text-sm sm:text-base font-serif italic mt-1">
+                                "El genio que revolucionó para siempre la filosofía del juego."
+                            </p>
+                        </div>
+
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            Primer futbolista en la historia en ganar el Balón de Oro en tres ocasiones. Pilar fundamental de la inolvidable 'Naranja Mecánica' y del Ajax tricampeón de Europa, redefinió la forma de entender el deporte mediante el concepto del 'Fútbol Total'.
+                        </p>
+
+                        <!-- Key Stats Grid -->
+                        <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-2">
+                            <div class="glass-card p-4 rounded-xl border border-gold-500/20 text-center hover:border-gold-400/50 transition">
+                                <div class="font-serif text-2xl sm:text-4xl font-extrabold gold-gradient-bright">3</div>
+                                <div class="text-[11px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Balones de Oro</div>
+                            </div>
+                            <div class="glass-card p-4 rounded-xl border border-gold-500/20 text-center hover:border-gold-400/50 transition">
+                                <div class="font-serif text-2xl sm:text-4xl font-extrabold text-white">3</div>
+                                <div class="text-[11px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Copas de Europa (Ajax)</div>
+                            </div>
+                            <div class="glass-card p-4 rounded-xl border border-gold-500/20 text-center hover:border-gold-400/50 transition">
+                                <div class="font-serif text-2xl sm:text-4xl font-extrabold text-white">400+</div>
+                                <div class="text-[11px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Goles Profesionales</div>
+                            </div>
+                        </div>
+
+                        <!-- Highlights Badge list -->
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="px-3 py-1 rounded-full text-xs glass-panel border border-slate-700 text-slate-300">
+                                <i class="fa-solid fa-brain text-gold-400 mr-1.5"></i>Creador del Fútbol Total
+                            </span>
+                            <span class="px-3 py-1 rounded-full text-xs glass-panel border border-slate-700 text-slate-300">
+                                <i class="fa-solid fa-globe text-gold-400 mr-1.5"></i>Subcampeón del Mundo 1974
+                            </span>
+                            <span class="px-3 py-1 rounded-full text-xs glass-panel border border-slate-700 text-slate-300">
+                                <i class="fa-solid fa-medal text-gold-400 mr-1.5"></i>Mejor Jugador Europeo del Siglo XX
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: RONALDO NAZÁRIO -->
+            <div class="slide-content w-full" data-slide="3">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <!-- Winner Image Container -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative group w-full max-w-sm lg:max-w-none">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-gold-600 via-yellow-400 to-gold-700 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
+                            <div class="relative aspect-[3/4] w-full rounded-2xl overflow-hidden glass-card border-2 border-gold-500/40 p-2 shadow-2xl flex items-center justify-center">
+                                <img src="images/balondeoro4.jpg" 
+                                     alt="Ronaldo Nazário Balón de Oro" 
+                                     onerror="handleImageError(this, 'Ronaldo Nazário', '2 Balones de Oro')" 
+                                     class="w-full h-full object-cover rounded-xl transition duration-700 group-hover:scale-105">
+                                <div class="absolute inset-0 rounded-xl bg-gradient-to-t from-dark-900 via-transparent to-transparent opacity-80"></div>
+                                <div class="absolute bottom-4 left-4 right-4 text-center">
+                                    <span class="inline-block px-3 py-1 rounded-full bg-gold-500/20 border border-gold-400/40 text-gold-300 text-xs font-semibold uppercase tracking-widest backdrop-blur-md">
+                                        El Fenómeno
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Winner Info & Stats -->
+                    <div class="lg:col-span-7 flex flex-col justify-center space-y-6">
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="px-3 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-400 rounded-md text-xs font-bold uppercase tracking-widest">
+                                    Brasil • Delantero
+                                </span>
+                                <span class="text-slate-400 text-xs font-medium">Años de Oro: 1997, 2002</span>
+                            </div>
+                            <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+                                Ronaldo <span class="gold-gradient-text">Nazário</span>
+                            </h2>
+                            <p class="text-gold-400/90 text-sm sm:text-base font-serif italic mt-1">
+                                "La potencia, velocidad y talento individual más devastador de la historia."
+                            </p>
+                        </div>
+
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            Ganador más joven en la historia del galardón al conseguirlo con apenas 21 años en 1997. Tras resurgir de graves lesiones, conquistó el Mundial de Corea-Japón 2002 siendo la gran figura para alzarse con su segundo Balón de Oro.
+                        </p>
+
+                        <!-- Key Stats Grid -->
+                        <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-2">
+                            <div class="glass-card p-4 rounded-xl border border-gold-500/20 text-center hover:border-gold-400/50 transition">
+                                <div class="font-serif text-2xl sm:text-4xl font-extrabold gold-gradient-bright">2</div>
+                                <div class="text-[11px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Balones de Oro</div>
+                            </div>
+                            <div class="glass-card p-4 rounded-xl border border-gold-500/20 text-center hover:border-gold-400/50 transition">
+                                <div class="font-serif text-2xl sm:text-4xl font-extrabold text-white">2</div>
+                                <div class="text-[11px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Copas del Mundo</div>
+                            </div>
+                            <div class="glass-card p-4 rounded-xl border border-gold-500/20 text-center hover:border-gold-400/50 transition">
+                                <div class="font-serif text-2xl sm:text-4xl font-extrabold text-white">15</div>
+                                <div class="text-[11px] sm:text-xs text-slate-400 uppercase tracking-wider font-semibold mt-1">Goles en Mundiales</div>
+                            </div>
+                        </div>
+
+                        <!-- Highlights Badge list -->
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="px-3 py-1 rounded-full text-xs glass-panel border border-slate-700 text-slate-300">
+                                <i class="fa-solid fa-fire text-gold-400 mr-1.5"></i>Ganador más joven (21 años)
+                            </span>
+                            <span class="px-3 py-1 rounded-full text-xs glass-panel border border-slate-700 text-slate-300">
+                                <i class="fa-solid fa-trophy text-gold-400 mr-1.5"></i>Bota de Oro Mundial 2002 (8 goles)
+                            </span>
+                            <span class="px-3 py-1 rounded-full text-xs glass-panel border border-slate-700 text-slate-300">
+                                <i class="fa-solid fa-star text-gold-400 mr-1.5"></i>3x FIFA World Player
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- BOTTOM NAVIGATION & THUMBNAILS BAR -->
+    <footer class="relative z-20 w-full px-4 sm:px-8 py-4 glass-panel border-t border-gold-500/20">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            
+            <!-- Prev / Next Control Buttons -->
+            <div class="flex items-center gap-3 order-2 md:order-1">
+                <button onclick="prevSlide()" class="group flex items-center justify-center w-11 h-11 rounded-full glass-card border border-gold-500/30 text-gold-300 hover:text-white hover:border-gold-400 transition-all gold-button-glow cursor-pointer">
+                    <i class="fa-solid fa-chevron-left text-sm group-hover:-translate-x-0.5 transition-transform"></i>
+                </button>
+                <button onclick="nextSlide()" class="group flex items-center justify-center w-11 h-11 rounded-full glass-card border border-gold-500/30 text-gold-300 hover:text-white hover:border-gold-400 transition-all gold-button-glow cursor-pointer">
+                    <i class="fa-solid fa-chevron-right text-sm group-hover:translate-x-0.5 transition-transform"></i>
+                </button>
+                <span class="text-xs text-slate-400 hidden lg:inline ml-2">
+                    Usa las flechas <kbd class="px-2 py-0.5 glass-card rounded text-gold-400 border border-slate-700">←</kbd> <kbd class="px-2 py-0.5 glass-card rounded text-gold-400 border border-slate-700">→</kbd> del teclado
+                </span>
+            </div>
+
+            <!-- Interactive Thumbnails Carousel -->
+            <div class="flex items-center gap-2 sm:gap-3 order-1 md:order-2 overflow-x-auto max-w-full py-1 px-1">
+                
+                <!-- Thumb 1 -->
+                <button onclick="goToSlide(0)" class="thumb-btn relative rounded-lg overflow-hidden border-2 transition-all w-16 sm:w-20 h-12 flex-shrink-0 cursor-pointer border-gold-400 shadow-lg shadow-gold-500/20 scale-105" data-thumb="0">
+                    <img src="images/balondeoro1.jpg" onerror="this.src='https://placehold.co/100x80/1a1810/dfa835?text=Messi'" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-dark-900/40 hover:bg-transparent transition-colors"></div>
+                    <span class="absolute bottom-1 right-1 text-[9px] font-bold text-white bg-dark-900/80 px-1 rounded">01</span>
+                </button>
+
+                <!-- Thumb 2 -->
+                <button onclick="goToSlide(1)" class="thumb-btn relative rounded-lg overflow-hidden border-2 transition-all w-16 sm:w-20 h-12 flex-shrink-0 cursor-pointer border-slate-700/60 opacity-60 hover:opacity-100" data-thumb="1">
+                    <img src="images/balondeoro2.jpg" onerror="this.src='https://placehold.co/100x80/1a1810/dfa835?text=CR7'" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-dark-900/40 hover:bg-transparent transition-colors"></div>
+                    <span class="absolute bottom-1 right-1 text-[9px] font-bold text-white bg-dark-900/80 px-1 rounded">02</span>
+                </button>
+
+                <!-- Thumb 3 -->
+                <button onclick="goToSlide(2)" class="thumb-btn relative rounded-lg overflow-hidden border-2 transition-all w-16 sm:w-20 h-12 flex-shrink-0 cursor-pointer border-slate-700/60 opacity-60 hover:opacity-100" data-thumb="2">
+                    <img src="images/balondeoro3.jpg" onerror="this.src='https://placehold.co/100x80/1a1810/dfa835?text=Cruyff'" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-dark-900/40 hover:bg-transparent transition-colors"></div>
+                    <span class="absolute bottom-1 right-1 text-[9px] font-bold text-white bg-dark-900/80 px-1 rounded">03</span>
+                </button>
+
+                <!-- Thumb 4 -->
+                <button onclick="goToSlide(3)" class="thumb-btn relative rounded-lg overflow-hidden border-2 transition-all w-16 sm:w-20 h-12 flex-shrink-0 cursor-pointer border-slate-700/60 opacity-60 hover:opacity-100" data-thumb="3">
+                    <img src="images/balondeoro4.jpg" onerror="this.src='https://placehold.co/100x80/1a1810/dfa835?text=Ronaldo'" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-dark-900/40 hover:bg-transparent transition-colors"></div>
+                    <span class="absolute bottom-1 right-1 text-[9px] font-bold text-white bg-dark-900/80 px-1 rounded">04</span>
+                </button>
+
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 4;
+        let isAutoplay = false;
+        let autoplayInterval = null;
+        let progressInterval = null;
+        const duration = 6000; // 6 seconds per slide
+        let progress = 0;
+
+        // DOM Element references
+        const slides = document.querySelectorAll('.slide-content');
+        const thumbs = document.querySelectorAll('.thumb-btn');
+        const currentSlideNumEl = document.getElementById('currentSlideNum');
+        const progressBarEl = document.getElementById('progressBar');
+        const autoplayBtnEl = document.getElementById('autoplayBtn');
+        const autoplayIconEl = document.getElementById('autoplayIcon');
+        const autoplayTextEl = document.getElementById('autoplayText');
+
+        function updateSlides() {
+            // Update active state on slides
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            // Update thumbnail borders & highlight status
+            thumbs.forEach((thumb, index) => {
+                if (index === currentSlide) {
+                    thumb.className = "thumb-btn relative rounded-lg overflow-hidden border-2 transition-all w-16 sm:w-20 h-12 flex-shrink-0 cursor-pointer border-gold-400 shadow-lg shadow-gold-500/20 scale-105 opacity-100";
+                } else {
+                    thumb.className = "thumb-btn relative rounded-lg overflow-hidden border-2 transition-all w-16 sm:w-20 h-12 flex-shrink-0 cursor-pointer border-slate-700/60 opacity-50 hover:opacity-90";
+                }
+            });
+
+            // Update counter numbers
+            currentSlideNumEl.textContent = String(currentSlide + 1).padStart(2, '0');
+
+            // Reset progress bar on manual navigation
+            resetProgressBar();
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlides();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlides();
+        }
+
+        function goToSlide(index) {
+            if (index >= 0 && index < totalSlides) {
+                currentSlide = index;
+                updateSlides();
+            }
+        }
+
+        function resetProgressBar() {
+            progress = 0;
+            progressBarEl.style.width = '0%';
+        }
+
+        function startAutoplayTimer() {
+            clearInterval(autoplayInterval);
+            clearInterval(progressInterval);
+
+            const intervalStep = 50; // update every 50ms
+            const stepIncrement = (intervalStep / duration) * 100;
+
+            progressInterval = setInterval(() => {
+                if (isAutoplay) {
+                    progress += stepIncrement;
+                    progressBarEl.style.width = `${Math.min(progress, 100)}%`;
+
+                    if (progress >= 100) {
+                        nextSlide();
+                    }
+                }
+            }, intervalStep);
+        }
+
+        function toggleAutoplay() {
+            isAutoplay = !isAutoplay;
+
+            if (isAutoplay) {
+                autoplayIconEl.className = "fa-solid fa-pause text-xs text-gold-400";
+                autoplayTextEl.textContent = "Pausa";
+                autoplayBtnEl.classList.add("border-gold-400", "bg-gold-500/20");
+                startAutoplayTimer();
+            } else {
+                autoplayIconEl.className = "fa-solid fa-play text-xs text-gold-400";
+                autoplayTextEl.textContent = "Auto";
+                autoplayBtnEl.classList.remove("border-gold-400", "bg-gold-500/20");
+                clearInterval(progressInterval);
+                resetProgressBar();
+            }
+        }
+
+        function handleImageError(img, name, badgeText) {
+            const parent = img.parentElement;
+            // Hide the broken img tag
+            img.style.display = 'none';
+
+            // Create a custom styled golden fallback card
+            const fallbackHTML = `
+                <div class="w-full h-full rounded-xl bg-gradient-to-b from-dark-800 via-dark-900 to-black p-6 flex flex-col items-center justify-center text-center border border-gold-500/30">
+                    <div class="w-20 h-20 rounded-full bg-gold-500/10 border border-gold-400/40 flex items-center justify-center mb-4 gold-border-glow">
+                        <i class="fa-solid fa-trophy text-4xl gold-gradient-text"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-white mb-1">${name}</h3>
+                    <p class="text-xs text-gold-400 font-semibold uppercase tracking-wider mb-3">${badgeText}</p>
+                    <span class="text-[10px] text-slate-500 italic">Gala Balón de Oro</span>
+                </div>
+            `;
+            parent.insertAdjacentHTML('beforeend', fallbackHTML);
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log("Error intentando pantalla completa:", err);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            // Keyboard arrows control
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') {
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (e.key === ' ') {
+                    e.preventDefault();
+                    toggleAutoplay();
+                }
+            });
+
+            // Mobile Touch swipe gesture handling
+            let touchStartX = 0;
+            let touchEndX = 0;
+            const stage = document.querySelector('main');
+
+            stage.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            stage.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    nextSlide(); // Swipe Left -> Next
+                }
+                if (touchEndX > touchStartX + swipeThreshold) {
+                    prevSlide(); // Swipe Right -> Prev
+                }
+            }
+
+            // Initialize presentation
+            updateSlides();
+        });
+    </script>
+</body>
+</html>
